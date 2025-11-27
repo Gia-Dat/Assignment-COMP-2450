@@ -1,6 +1,6 @@
 package comp2450;
 
-import comp2450.model.menuPrinter;
+import comp2450.ui.menuPrinter;
 import java.util.Scanner;
 
 public class main {

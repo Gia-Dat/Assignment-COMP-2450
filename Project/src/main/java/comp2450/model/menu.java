@@ -2,6 +2,8 @@ package comp2450.model;
 
 import com.google.common.base.Preconditions;
 import java.util.ArrayList;
+import comp2450.exceptions.InvalidCoordinateException;
+import comp2450.exceptions.ObstacleCollisionException;
 
 /** Pure data manager (no I/O). */
 public class menu {
@@ -92,4 +94,18 @@ public class menu {
     public ArrayList<statistics> getStatistics() { checkInvariant(); return new ArrayList<>(stat); }
 
     public String getUserName() { checkInvariant(); return userName; }
+
+    public void addObstacleToWorld(World world, obstacle o)
+            throws InvalidCoordinateException, ObstacleCollisionException {
+        Preconditions.checkNotNull(world, "world");
+        Preconditions.checkNotNull(o, "obstacle");
+        world.map().addObstacle(o);
+    }
+
+    public boolean paintRouteOnWorld(World world, route r)
+            throws InvalidCoordinateException, ObstacleCollisionException {
+        Preconditions.checkNotNull(world, "world");
+        Preconditions.checkNotNull(r, "route");
+        return world.map().addRoute(r);
+    }
 }
